@@ -1,0 +1,35 @@
+<launch>
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <!-- 基础参数 -->
+    <param name="min_particles" value="500"/>    <!-- 初始收敛建议1000-2000 -->
+    <param name="max_particles" value="5000"/>    <!-- 平衡性能与精度 -->
+    <param name="kld_err" value="0.05"/>          <!-- 粒子分布误差容忍度 -->
+    <param name="kld_z" value="0.95"/>            <!-- 置信度保持默认 -->
+    <param name="transform_tolerance" value="0.3"/>
+
+    <!-- 里程计噪声模型（差分驱动） -->
+    <param name="odom_model_type" value="diff"/>
+    <param name="odom_alpha1" value="0.2"/>       <!-- 旋转→旋转噪声 -->
+    <param name="odom_alpha2" value="0.2"/>       <!-- 平移→旋转噪声 -->
+    <param name="odom_alpha3" value="0.3"/>       <!-- 旋转→平移噪声 -->
+    <param name="odom_alpha4" value="0.2"/>       <!-- 平移→平移噪声 -->
+    <param name="odom_alpha5" value="0.1"/>
+
+    <!-- 激光雷达模型 -->
+    <param name="laser_model_type" value="likelihood_field_prob"/>
+    <param name="laser_z_hit" value="0.7"/>        <!-- 提高真实测量权重 -->
+    <param name="laser_z_rand" value="0.5"/>       <!-- 降低噪声权重 -->
+    <param name="laser_sigma_hit" value="0.3"/>    <!-- 容忍地图误差 -->
+    <param name="laser_likelihood_max_dist" value="2.0"/>
+    <param name="laser_max_beams" value="50"/>     <!-- 平衡计算量 -->
+    <param name="resample_interval" value="1"/>
+    <!-- 更新频率控制 -->
+    <param name="update_min_d" value="0.4"/>       <!-- 提高响应速度 -->
+    <param name="update_min_a" value="0.25"/>       <!-- 约11.5度触发更新 -->
+
+    <!-- 坐标系 (必须与TF树一致!) -->
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="laser"/> <!-- 需改为实际基坐标系 -->
+    <param name="global_frame_id" value="map"/>
+  </node>
+</launch>

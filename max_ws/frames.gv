@@ -1,0 +1,17 @@
+digraph G {
+"camera_init" -> "robot_foot_init"[label="Broadcaster: /tf_pub_2\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1754710322.618 sec old)\nBuffer length: 0.000 sec\n"];
+"map" -> "camera_init"[label="Broadcaster: /transform_fusion\nAverage rate: 46.065 Hz\nMost recent transform: 1754710322.600 ( 0.017 sec old)\nBuffer length: 4.950 sec\n"];
+"unilidar_imu_initial" -> "unilidar_imu"[label="Broadcaster: /unitree_lidar_ros_node\nAverage rate: 438.382 Hz\nMost recent transform: 1754710322.614 ( 0.004 sec old)\nBuffer length: 4.973 sec\n"];
+"unilidar_imu" -> "unilidar_lidar"[label="Broadcaster: /unitree_lidar_ros_node\nAverage rate: 438.383 Hz\nMost recent transform: 1754710322.614 ( 0.004 sec old)\nBuffer length: 4.973 sec\n"];
+"map" -> "aft_mapped_2d"[label="Broadcaster: /Trans_TF_2d\nAverage rate: 939.906 Hz\nMost recent transform: 1754710322.617 ( 0.001 sec old)\nBuffer length: 4.976 sec\n"];
+"aft_mapped" -> "aft_mapped_body"[label="Broadcaster: /tf_pub_1\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1754710322.618 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_init" -> "aft_mapped"[label="Broadcaster: /laserMapping\nAverage rate: 12.203 Hz\nMost recent transform: 1754710322.509 ( 0.109 sec old)\nBuffer length: 4.835 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1754710322.618"[ shape=plaintext ] ;
+ }->"unilidar_imu_initial";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1754710322.618"[ shape=plaintext ] ;
+ }->"map";
+}

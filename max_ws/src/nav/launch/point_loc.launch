@@ -1,0 +1,38 @@
+<launch>
+    <include file="$(find unitree_lidar_ros)/launch/run_without_rviz.launch" />
+    <include file="$(find point_lio_unilidar)/launch/mapping_unilidar_l2.launch" />
+
+    <node name="localisation" pkg="service" type="localisation.py" output="screen">
+        </node>
+
+    <node pkg="service" type="transform_fusion.py" name="transform_fusion" output="screen" />
+
+
+    <node pkg="pcl_ros" type="pcd_to_pointcloud" name="map_publisher" output="screen"
+        args="/home/orangepi/max_ws/src/point_lio_unilidar/PCD/scans_0807.pcd 5 _frame_id:=map cloud_pcd:=map" />
+
+
+	<node name = "map_server" pkg = "map_server" type = "map_server" args="$(find nav)/map/nav0807.yaml /map:=prior_map"/>
+
+
+    <include file="$(find nav)/launch/pointcloud2laserscan.launch" />
+
+    <!-- <node name = "Trans_TF_2d" pkg = "service" type = "Trans_TF_2d"/> -->
+
+
+
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="tf_pub_1" args="-0.10 0 0 0 0 0 aft_mapped aft_mapped_body" />
+	<!-- 发布一个雷达初始位置camera_init到机器人足端初始位置body_init的静态映射 -->
+	<node pkg="tf2_ros" type="static_transform_publisher" name="tf_pub_2" args="0.10 0 0 0 0 0 camera_init robot_foot_init" />
+    <!-- <node pkg="service" type="publish_initial_pose.py" name="publish_initial_pose" output="screen" /> -->
+
+    <include file="$(find nav)/launch/move_base_TEB.launch" />
+
+     <node pkg="jie_ware" type="costmap_cleaner" name="costmap_cleaner" />
+    <node name="motor_control" pkg="service" type="motor_control.py" output="screen"/>
+
+
+    <node name="move_point" pkg="service" type="move_point.py" output="screen">
+    </node>
+</launch>

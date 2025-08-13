@@ -1,0 +1,138 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "get_image",
+            "description": "当用户包含：'这是什么东西'、'帮我看看'、'帮我看一下'，调用此函数获取物品的图片信息",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "用户关于图片的具体问题"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "only_text",
+            "description": "当用户的提问不需要图片信息时调用此函数",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "用户的提问"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function":{
+            "name": "charge_back",
+            "description": "回到充电桩的位置"
+        }
+    },
+    {
+        "type": "function",
+        "function":{
+            "name": "follow_me",
+            "description": "开始跟随说话人"
+        }
+    },
+    {
+        "type": "function",
+        "function":{
+            "name": "stop_following",
+            "description": "停止跟随"
+        }
+    },
+    {
+        "type": "function",
+        "function":{
+            "name": "make_phone_call",
+            "description": "发起电话呼叫",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "phone_number": {
+                        "type": "string",
+                        "description": "要拨打的电话号码"
+                    }
+                },
+                "required": ["phone_number"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function":{
+            "name": "handle_fall_event",
+            "description": "当检测到外部节点发来摔倒信号时处理摔倒事件，不对用户语音中的摔倒做响应"
+        }
+    },
+    {
+        "type": "function",
+        "function":{
+            "name": "remember_information",
+            "description": "记住用户提供的信息，并将其添加到后续对话中",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "用于存储信息的键"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "要存储的信息的值"
+                    }
+                },
+                "required": ["key", "value"]
+            }
+        }
+    },
+    { 
+        "type": "function",
+        "function":{
+            "name": "find_item",
+            "description": "去某个位置寻找用户提到的物品",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "要寻找物品的地点"
+                    },
+                    "item_name": {
+                        "type": "string",
+                        "description": "要寻找的物品的名称"
+                    }
+                },
+                "required": ["location","item_name"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+          "name": "get_weather",
+          "description": "当用户询问某地区天气情况时，调用此函数获取天气信息",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "用户询问的地区，最多取到市级且不要带有其它信息，例如：深圳市、广州市、广东省，而不要写：广东省深圳市、广东省广州市、深圳市龙华区等。如果用户没有提及地点，默认为深圳市"
+              }
+            }
+          }
+        }
+      }
+    
+]

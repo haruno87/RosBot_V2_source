@@ -1,0 +1,14 @@
+<launch>
+    <include file="$(find nav)/launch/point_loc.launch" />
+
+
+    <node pkg="service" type="Trans_TF_2d" name="Trans_TF_2d" output="screen" />
+
+
+    <node pkg="service" type="motor_control.py" name="motor_control" output="screen" />
+  
+  
+    <include file="$(find nav)/launch/move_base_TEB.launch" />
+    <node pkg="jie_ware" type="costmap_cleaner" name="costmap_cleaner" output="screen" />
+
+</launch>

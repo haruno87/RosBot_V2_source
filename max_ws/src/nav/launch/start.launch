@@ -1,0 +1,27 @@
+<launch>
+
+    <include file="$(find wit_ros_imu)/launch/rviz_and_imu.launch" />
+    <include file="$(find rplidar_ros)/launch/rplidar_a1.launch" />
+
+    <node name="odom_node" pkg="service" type="motor_control.py" output="screen">
+    </node>
+
+    <include file="$(find nav)/launch/map_server.launch" /> 
+
+    <include file="$(find nav)/launch/amcl.launch" /> 
+    <!-- Run lidar_loc -->
+  <!-- <node pkg="jie_ware" type="lidar_loc" name="lidar_loc" >
+    <param name="base_frame" value="laser" />
+    <param name="odom_frame" value="odom" />
+    <param name="laser_frame" value="laser" />
+    <param name="laser_topic" value="scan" />
+  </node> -->
+  
+
+    <include file="$(find nav)/launch/move_base.launch" />
+
+    <node pkg="jie_ware" type="costmap_cleaner" name="costmap_cleaner" />
+    
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find nav)/rviz/rviz_0811.rviz">
+    </node>
+</launch>

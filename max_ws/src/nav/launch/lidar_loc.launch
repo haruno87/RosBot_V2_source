@@ -1,0 +1,28 @@
+<launch>
+
+  <include file="$(find unitree_lidar_ros)/launch/run_without_rviz.launch" />
+  <include file="$(find point_lio_unilidar)/launch/mapping_unilidar_l2.launch" />
+
+
+  <include file="$(find nav)/launch/map_server.launch" />
+  
+  <include file="$(find nav)/launch/pointcloud2laserscan.launch" />
+
+
+	<node pkg="tf2_ros" type="static_transform_publisher" name="tf_pub_1" args="0 0 0 0 0 0 aft_mapped aft_mapped_body" />
+
+	<node pkg="tf2_ros" type="static_transform_publisher" name="tf_pub_2" args="0 0 0 0 0 0 camera_init robot_foot_init" />
+  
+  
+  <include file="$(find nav)/launch/amcl.launch" />
+
+
+  <!-- <node pkg="service" type="motor_control.py" name="motor_control" output="screen" /> -->
+
+
+  <include file="$(find nav)/launch/move_base_DWA.launch" />
+  <node pkg="jie_ware" type="costmap_cleaner" name="costmap_cleaner" output="screen" />
+
+
+<!-- aft_mapped camera_init-->
+</launch>
