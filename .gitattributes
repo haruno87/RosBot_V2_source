@@ -1,0 +1,55 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.py    text eol=lf
+*.cpp   text eol=lf
+*.h     text eol=lf
+*.c     text eol=lf
+*.cc    text eol=lf
+*.hpp   text eol=lf
+
+# Scripts
+*.sh    text eol=lf
+*.bash  text eol=lf
+
+# Config files
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.json  text eol=lf
+*.xml   text eol=lf
+*.launch text eol=lf
+*.cfg   text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+*.rst   text eol=lf
+
+# CMake
+CMakeLists.txt  text eol=lf
+*.cmake         text eol=lf
+*.mk            text eol=lf
+
+# Binary files
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.wav   binary
+*.mp3   binary
+*.pcd   binary
+*.bt    binary
+*.ot    binary
+*.bag   binary
+*.pmdl  binary
+*.res   binary
+*.umdl  binary
+*.so    binary
+*.a     binary
+*.jar   binary
+
+# Archives
+*.zip   binary
+*.tar   binary
+*.gz    binary

@@ -1,3 +1,4 @@
+# === ROS / Catkin Build ===
 devel/
 logs/
 build/
@@ -25,27 +26,76 @@ devel_isolated/
 *.dox
 *.wikidoc
 
-# eclipse stuff
+# === IDE / Editor ===
+# Eclipse
 .project
 .cproject
 
-# qcreator stuff
+# Qt Creator
 CMakeLists.txt.user
 
-srv/_*.py
+# VSCode
+.vscode/
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# === Secrets & Config ===
+.env
+*.secret
+*_secret*
+secrets.yaml
+credentials.json
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.#*
+
+# === Audio & Generated Binary Data ===
+*.wav
+*.mp3
 *.pcd
-*.pyc
+*.bt
+*.ot
+*.bag
+captured_image.jpg
+input.wav
+
+# === Logs ===
+*.log
+
+# === Qt Creator ===
 qtcreator-*
 *.user
 
+# === Planning ===
 /planning/cfg
 /planning/docs
 /planning/src
 
-*~
-
-# Emacs
+# === Emacs ===
 .#*
 
-# Catkin custom files
+# === Catkin ===
 CATKIN_IGNORE

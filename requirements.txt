@@ -1,0 +1,30 @@
+# RosBot V2 - Python Dependencies
+# Core
+numpy>=1.19.0
+requests>=2.25.0
+
+# Audio
+pyaudio>=0.2.11
+
+# Computer Vision
+opencv-python>=4.5.0
+
+# LLM & AI
+openai>=1.0.0            # Alibaba DashScope (OpenAI-compatible)
+dashscope>=1.14.0        # Alibaba ASR/TTS
+
+# ROS (installed via apt, listed for reference)
+# rospy
+# actionlib
+# std_msgs
+# geometry_msgs
+# move_base_msgs
+# sensor_msgs
+# actionlib_msgs
+
+# Alibaba Cloud
+alibabacloud_ccc20200701>=1.0.0
+alibabacloud_tea_openapi>=0.3.0
+alibabacloud_tea_util>=0.3.0
+
+# SMS (built-in urllib/hashlib/base64 — stdlib, no install needed)
