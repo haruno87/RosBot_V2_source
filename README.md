@@ -1,4 +1,4 @@
-# 🤖 RosBot V2 — 适老化智能康养机器人
+#  RosBot V2 — 适老化智能康养机器人
 
 <div align="center">
 
@@ -15,17 +15,17 @@
 
 ---
 
-## 📖 项目简介
+##  项目简介
 
 **RosBot V2** 是一款面向高龄及行动不便老人的智能康养服务机器人。通过语音唤醒与大模型对话交互，机器人能够理解老人的自然语言指令，提供健康咨询、物品寻找、紧急求助、自主导航陪伴等一站式智能服务。
 
 本项目在 RosBot V1 的基础上，全面升级了语音交互能力和自主导航系统，利用百度文心大模型（ERNIE）和阿里通义千问（Qwen）实现了多模态感知与智能决策。
 
-> 🎥 **演示视频**: [Bilibili BV1ijP4zcEVN](https://www.bilibili.com/video/BV1ijP4zcEVN/?share_source=copy_web&vd_source=7f605a0a612167349f0bd705dfa891c8)
+>  **演示视频**: [Bilibili BV1ijP4zcEVN](https://www.bilibili.com/video/BV1ijP4zcEVN/?share_source=copy_web&vd_source=7f605a0a612167349f0bd705dfa891c8)
 
-## ✨ 核心功能
+##  核心功能
 
-### 🗣️ 智能语音交互
+###  智能语音交互
 - **唤醒词检测**: 基于 [Snowboy](https://github.com/Kitt-AI/snowboy) 的热词唤醒，支持自定义唤醒词
 - **语音识别 (ASR)**: 集成百度语音识别 API / 阿里云 DashScope，实时语音转文字
 - **大模型对话**: 双 LLM 架构
@@ -34,32 +34,32 @@
 - **语音合成 (TTS)**: 百度语音合成 / 阿里 CosyVoice，自然流畅的语音播报
 - **机器人表情**: 通过 HTTP 接口控制机器人面部表情（眨眼、聆听、休眠等）
 
-### 🧭 自主导航系统
+###  自主导航系统
 - **SLAM 建图**: 基于 Point-LIO + OctoMap 的实时 3D 点云建图
 - **路径规划**: 支持 DWA / TEB 两种局部规划器，适配不同场景
 - **自主定位**: AMCL 自适应蒙特卡洛定位，支持 2D 地图重定位
 - **激光雷达**: 宇树 Unitree LiDAR + 思岚 RP LiDAR 双雷达方案
 - **多点导航**: 语音指令导航到预设目标点（如饮水机、维修台等）
 
-### 📸 视觉感知
+###  视觉感知
 - **物品寻找**: 调用摄像头拍照 → VLM 视觉大模型分析 → 语音告知物品位置
 - **环境感知**: 支持拍照理解周围环境，回答老人"这是什么"类问题
 
-### 🆘 安全守护
+###  安全守护
 - **摔倒检测**: 通过外部传感器（MQTT）实时监测老人状态
 - **紧急响应**: 检测到摔倒后自动触发：
-  - 🔊 语音播报关怀语
-  - 📱 发送紧急短信通知社区健康中心
-  - 📞 拨打预设紧急联系人电话
+  -  语音播报关怀语
+  -  发送紧急短信通知社区健康中心
+  -  拨打预设紧急联系人电话
 
-### 🌤️ 生活助手
+###  生活助手
 - **天气查询**: 集成高德天气 API，支持全国城市天气实时查询
 - **健康建议**: 针对老龄人特点提供饮食、运动、用药建议
 - **信息记忆**: 记住老人的偏好和重要信息（用药时间、家人联系方式等）
 - **跟随功能**: 激光雷达人体跟踪，实现机器人跟随老人移动
 - **自动回充**: 低电量时自动返回充电桩
 
-## 🏗️ 系统架构
+##  系统架构
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -84,7 +84,7 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 📁 项目结构
+##  项目结构
 
 ```
 RosBot_V2/
@@ -101,7 +101,7 @@ RosBot_V2/
 └── max_ws/                       # ROS 工作空间 (Catkin)
     ├── readme.md                 # ROS 启动与操作说明
     └── src/                      # ROS 功能包
-        ├── baidu_model_chat_linux_0812/  # 🤖 LLM 语音交互核心
+        ├── baidu_model_chat_linux_0812/  # LLM 语音交互核心
         │   ├── main.py                  # 主程序入口 (百度文心方案)
         │   ├── llm_to_vlm.py            # 主程序入口 (通义千问方案)
         │   ├── functions.py             # LLM 工具调用处理
@@ -114,30 +114,30 @@ RosBot_V2/
         │   ├── robot_face_seting.py     # 机器人表情控制
         │   └── instructions.txt         # 系统提示词
         │
-        ├── nav/                         # 🧭 导航功能包
+        ├── nav/                         # 导航功能包
         │   ├── launch/                  # 启停脚本 (建图/定位/导航)
         │   ├── map/                     # 地图文件 (.yaml, .pgm)
         │   ├── param/                   # 导航参数配置
         │   └── src/                     # 导航节点源码
         │
-        ├── service/                     # 🔧 基础服务功能包
+        ├── service/                     # 基础服务功能包
         │   ├── scripts/                 # 控制脚本
         │   │   ├── motor_control.py     # 电机控制
         │   │   ├── key_scans.py         # 键盘遥控
         │   │   └── tf_trans.py          # TF 坐标变换
         │   └── src/                     # 服务节点源码
         │
-        ├── point_lio_unilidar/          # 📡 Point-LIO 激光 SLAM
-        ├── unitree_lidar_ros/           # 🔦 宇树激光雷达驱动
+        ├── point_lio_unilidar/          # Point-LIO 激光 SLAM
+        ├── unitree_lidar_ros/           # 宇树激光雷达驱动
         ├── unitree_lidar_sdk/           # 宇树雷达 SDK
-        ├── rplidar_ros/                 # 🔦 思岚激光雷达驱动
-        ├── wit_ros_imu/                 # 🧭 WIT IMU 姿态传感器
-        ├── octomap_mapping/             # 🗺️ OctoMap 3D 建图
-        ├── pcd2pgm_package/             # 🗺️ 点云转 2D 栅格地图
-        └── jie_ware/                    # 📦 自定义固件/工具
+        ├── rplidar_ros/                 # 思岚激光雷达驱动
+        ├── wit_ros_imu/                 # WIT IMU 姿态传感器
+        ├── octomap_mapping/             # OctoMap 3D 建图
+        ├── pcd2pgm_package/             # 点云转 2D 栅格地图
+        └── jie_ware/                    # 自定义固件/工具
 ```
 
-## 🔧 硬件配置
+## 硬件配置
 
 | 组件 | 型号 | 用途 |
 |------|------|------|
@@ -151,7 +151,7 @@ RosBot_V2/
 | 底盘 | 差速驱动底盘 | 自主移动 |
 | 电机 | 带编码器直流电机 | 里程计与运动控制 |
 
-## 🚀 快速开始
+## 快速开始
 
 ### 环境要求
 
@@ -251,7 +251,7 @@ roslaunch pcd2pgm run.launch
 roslaunch nav map_saver.launch
 ```
 
-## 🧠 LLM 工具调用能力
+## LLM 工具调用能力
 
 机器人通过 LLM Function Calling 实现以下工具能力：
 
@@ -269,24 +269,24 @@ roslaunch nav map_saver.launch
 | `handle_fall_event` | 处理摔倒事件 | 传感器自动触发 |
 | `remember_information` | 记忆信息 | "记住我女儿的电话" |
 
-## 🔒 安全提醒
+## 安全提醒
 
-> ⚠️ **重要**: 请勿将 API 密钥、密码等敏感信息提交到 Git 仓库！
+> **重要**: 请勿将 API 密钥、密码等敏感信息提交到 Git 仓库！
 
 本项目已在 `.gitignore` 中配置了 `.env` 文件忽略。使用前请：
 1. 将 `.env.example` 复制为 `.env`
 2. 在 `.env` 中填入真实的 API 密钥
 3. 修改代码中使用硬编码密钥的位置，改为从环境变量读取
 
-## 🤝 贡献
+## 贡献
 
-本项目为全国大学生嵌入式芯片与系统设计竞赛参赛作品，欢迎 Star ⭐ 和 Issue 讨论！
+本项目为全国大学生嵌入式芯片与系统设计竞赛参赛作品，欢迎 Star  和 Issue 讨论！
 
-## 📄 开源协议
+## 开源协议
 
 本项目基于 [MIT License](LICENSE) 开源。
 
-## 🙏 致谢
+## 致谢
 
 - [ROS](https://www.ros.org/) — 机器人操作系统
 - [Snowboy](https://github.com/Kitt-AI/snowboy) — 热词唤醒引擎
@@ -300,5 +300,5 @@ roslaunch nav map_saver.launch
 ---
 
 <div align="center">
-  <sub>Made with ❤️ for the elderly | 适老化 · 智能化 · 有温度</sub>
+  <sub>Made with for the elderly | by 王通润 trwang </sub>
 </div>

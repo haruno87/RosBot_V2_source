@@ -1,6 +1,6 @@
 # RosBot V2 — ROS 工作空间操作手册
 
-## ⚡ 环境配置
+## 环境配置
 
 每个新终端启动 ROS 命令前都需要执行：
 
@@ -10,7 +10,7 @@ source devel/setup.bash
 
 ---
 
-## 🗺️ 建图模式
+## 建图模式
 
 ### 启动建图
 
@@ -53,11 +53,11 @@ roslaunch pcd2pgm run.launch
 roslaunch nav map_saver.launch
 ```
 
-> ⚠️ **重要**: 每次建图完成后记得修改 .png / .yaml / .pcd 文件名以区分不同地图！
+> **重要**: 每次建图完成后记得修改 .png / .yaml / .pcd 文件名以区分不同地图！
 
 ---
 
-## 🧭 导航模式
+## 导航模式
 
 ### 启动导航
 
@@ -77,7 +77,7 @@ rosrun service motor_control.py
 
 ---
 
-## 🗣️ 语音交互模式
+## 语音交互模式
 
 ### 百度 ERNIE 方案
 
@@ -99,7 +99,7 @@ python llm_to_vlm.py
 
 ---
 
-## 📁 ROS 功能包说明
+## ROS 功能包说明
 
 | 功能包 | 说明 |
 |--------|------|
@@ -116,7 +116,7 @@ python llm_to_vlm.py
 
 ---
 
-## 🔧 调试工具
+## 调试工具
 
 ```bash
 # 查看 TF 坐标树
