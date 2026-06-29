@@ -1,4 +1,4 @@
-# 🚀 RosBot V2 部署与配置指南
+# RosBot V2 部署与配置指南
 
 ## 硬件准备
 
@@ -85,7 +85,7 @@ nano .env
 | 高德地图 | https://lbs.amap.com/dev/ | 天气查询 API |
 | SMS宝 | http://www.smsbao.com/ | 短信发送 |
 
-> ⚠️ **不要将 .env 文件提交到 Git！它已在 .gitignore 中。**
+> **不要将 .env 文件提交到 Git！它已在 .gitignore 中。**
 
 ### 6. 编译 ROS 工作空间
 
